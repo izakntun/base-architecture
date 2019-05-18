@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using Base.Mvc.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Base.Infra.Data.Context;
 
 namespace Base.Mvc
 {
@@ -41,6 +42,10 @@ namespace Base.Mvc
             services.AddDefaultIdentity<IdentityUser>()
                 .AddDefaultUI(UIFramework.Bootstrap4)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            services.AddDbContext<UniversityDBContext>(options => {
+                options.UseSqlServer(Configuration.GetConnectionString("BaseDB"));
+            });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
