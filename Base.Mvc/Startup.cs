@@ -14,6 +14,7 @@ using Base.Mvc.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Base.Infra.Data.Context;
+using Base.Infra.IoC;
 
 namespace Base.Mvc
 {
@@ -48,6 +49,8 @@ namespace Base.Mvc
             });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            RegisterServices(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -77,6 +80,10 @@ namespace Base.Mvc
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+        }
+        private static void RegisterServices(IServiceCollection services)
+        {
+            DependencyContainer.RegisterServices(services);
         }
     }
 }

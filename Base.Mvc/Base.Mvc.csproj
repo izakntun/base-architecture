@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Base.Infra.Data\Base.Infra.Data.csproj" />
+    <ProjectReference Include="..\Base.Infra.IoC\Base.Infra.IoC.csproj" />
   </ItemGroup>
 
 </Project>
