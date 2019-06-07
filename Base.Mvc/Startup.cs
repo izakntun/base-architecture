@@ -15,6 +15,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Base.Infra.Data.Context;
 using Base.Infra.IoC;
+using MediatR;
 
 namespace Base.Mvc
 {
@@ -49,6 +50,8 @@ namespace Base.Mvc
             });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            services.AddMediatR(typeof(Startup));
 
             RegisterServices(services);
         }
